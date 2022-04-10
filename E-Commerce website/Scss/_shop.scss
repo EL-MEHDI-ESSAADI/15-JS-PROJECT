@@ -1,0 +1,53 @@
+.shop {
+   text-align: center;
+   margin-block-end: 5rem;
+   .shopCon {
+      padding-inline: 1.5rem;
+      color: black;
+
+      .sectoin-title {
+         padding-block: 4rem 5.625rem;
+      }
+      .products {
+         grid-template-columns: repeat(auto-fit, minmax(16.25rem, 1fr));
+         gap: 2rem 1.5rem;
+         max-width: 77rem;
+         margin: auto;
+         .imgCon {
+            position: relative;
+            overflow: hidden;
+            &:is(:hover, :focus)  {
+               .addBtn {
+                  right: 0;
+               }
+               img {
+                  transform: scale(1.1);
+               }
+            }
+            img {
+               min-height: 12rem;
+               object-fit: cover;
+               transition: var(--mainTransition);
+            }
+            .addBtn {
+               position: absolute;
+               bottom: 10%;
+               right: -9.875rem;
+               padding: 0.5rem 0.7rem;
+               font-weight: bold;
+               letter-spacing: inherit;
+               transition: var(--mainTransition);
+               &:is(:hover, :focus) {
+                  color: #{"hsl(var(--clr-white))"};
+               }
+               i {
+                  margin-right: 0.7rem;
+               }
+            }
+         }
+         .title {
+            margin-block: 1rem 0.5rem;
+         }
+      }
+   }
+}

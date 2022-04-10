@@ -1,0 +1,35 @@
+.landing {
+   background: url(../assets/hero-bcg.jpeg)  center ;
+   background-size: cover;
+   min-height: calc(100vh - 3.75rem);
+   display: grid;
+   place-items: center;
+
+   .landingCon {
+      padding: 2rem;
+      text-align: center;
+      width: #{'min(46.688rem, 100%)'};
+      backdrop-filter: blur(2px);
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      border-radius: 0px;
+      :last-child {
+         color: inherit;
+         display: inline-block;
+         border-radius: 3px;
+         padding: 1rem 2rem;
+         margin-top: 1rem;
+         transition: var(--mainTransition);
+         box-shadow: #{"rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px"};
+         &:is(:hover, :focus) {
+            background: var(--clr-light-purple);
+         }
+      }
+      @media (min-width: 36rem) {
+         border-radius: 3px;
+   
+         :last-child {
+            margin-top: 2rem;
+         }
+      }
+   }
+}

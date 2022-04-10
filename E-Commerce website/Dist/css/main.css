@@ -1,0 +1,493 @@
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
+:root {
+  /* colors */
+  --clr-white: 0deg 0% 100%;
+  --clr-primary: 29deg 84% 63%;
+  --clr-black: #222;
+  --clr-light-purple: #e8e3de;
+  --clt-gray: #808080;
+  /* font sizes */
+  --fs-600: 2rem;
+  --fs-500: 2.5rem;
+  --fs-400: 1.5rem;
+  --fs-300: 1.1rem;
+  --fs-200: 0.85rem;
+  /* letter-spacing */
+  --mainSpacing: 0.1rem;
+  /* transition */
+  --mainTransition: all 0.3s linear;
+}
+
+@media (min-width: 36rem) {
+  :root {
+    /* font-sizes */
+    --fs-600: 2.6rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  :root {
+    /* font-sizes */
+    --fs-600: 3.4rem;
+  }
+}
+
+/* ------------------- */
+/* reset classes     */
+/* ------------------- */
+/* Box sizing */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background-color: initial;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img::-moz-selection {
+  background-color: transparent;
+}
+
+img::selection {
+  background-color: transparent;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  color: var(--clr-black);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* make images easier to work with */
+img,
+picutre {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: var(--flex-gap, 1rem);
+}
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+  gap: var(--grid-gap, 1rem);
+}
+
+.d-block {
+  display: block;
+}
+
+.container {
+  max-width: 73.125rem;
+  margin: auto;
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1rem);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-to-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: hsl( var(--clr-white) );
+  color: hsl( var(--clr-dark) );
+  padding: 0.5em 1em;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: -webkit-transform 250ms ease-in;
+  transition: -webkit-transform 250ms ease-in;
+  transition: transform 250ms ease-in;
+  transition: transform 250ms ease-in, -webkit-transform 250ms ease-in;
+}
+
+.skip-to-content:focus {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+/* colors */
+.bg-primary {
+  background-color: hsl( var(--clr-primary)  );
+}
+
+.bg-trn-primary {
+  background-color: hsl( var(--clr-primary) / .5 );
+}
+
+.bg-trn-white {
+  background-color: hsl( var(--clr-white) / .8 );
+}
+
+.bg-light-purple {
+  background-color: var(--clr-light-purple);
+}
+
+.text-primary {
+  color: hsl( var(--clr-primary) );
+}
+
+.text-gray {
+  color: var(--clt-gray);
+}
+
+/* typography */
+.main-Spacing {
+  letter-spacing: var(--mainSpacing);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.fs-600 {
+  font-size: var(--fs-600);
+}
+
+.fs-500 {
+  font-size: var(--fs-500);
+}
+
+.fs-400 {
+  font-size: var(--fs-400);
+}
+
+.fs-300 {
+  font-size: var(--fs-300);
+}
+
+.fs-200 {
+  font-size: var(--fs-200);
+}
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+  line-height: 1.1;
+}
+
+/* ------------------- */
+/* Component classes     */
+/* ------------------- */
+.CreaterLogo {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 70px;
+  z-index: 10000;
+  display: none;
+}
+
+.header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header .container {
+  padding: 1rem 1.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header .overlay {
+  width: 100%;
+  position: fixed;
+  inset: 0;
+  display: none;
+}
+
+.header .openCart {
+  position: relative;
+}
+
+.header .openCart .count {
+  position: absolute;
+  bottom: 66%;
+  left: 63%;
+  border-radius: 31%;
+  padding: .1rem 0.4rem;
+  color: white;
+  line-height: 1.1;
+  font-size: .8rem;
+}
+
+nav {
+  position: fixed;
+  z-index: 1000;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  overflow: auto;
+  text-align: center;
+  -webkit-transition: var(--mainTransition);
+  transition: var(--mainTransition);
+}
+
+nav.closed {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+nav .closeCart {
+  display: block;
+}
+
+nav .navHeader {
+  margin-block: .2rem 2rem;
+}
+
+nav .cartProducts {
+  text-align: left;
+  --grid-gap: 1.25rem;
+}
+
+nav .cartProducts .product {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .cartProducts .product img {
+  width: 4.6875rem;
+  height: 4.6875rem;
+}
+
+nav .cartProducts .product .infoContainer {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+nav .cartProducts .product .infoContainer .price {
+  margin-block: .5rem;
+}
+
+nav .cartProducts .product .infoContainer .price, nav .cartProducts .product .infoContainer .productName {
+  font-weight: bold;
+}
+
+nav .cartProducts .product .infoContainer > *:last-child {
+  display: -ms-grid;
+  display: grid;
+  text-align: center;
+}
+
+nav .total {
+  margin-block: 1.5rem 1rem;
+}
+
+nav .clearBtn {
+  letter-spacing: inherit;
+  padding: 1rem 3rem;
+  border-radius: 3px;
+  -webkit-transition: var(--mainTransition);
+  transition: var(--mainTransition);
+  -webkit-box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
+          box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
+}
+
+nav .clearBtn:hover {
+  background: wheat;
+}
+
+@media (min-width: 48rem) {
+  nav {
+    width: 28.2rem;
+  }
+}
+
+.landing {
+  background: url(../assets/hero-bcg.jpeg) center;
+  background-size: cover;
+  min-height: calc(100vh - 3.75rem);
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.landing .landingCon {
+  padding: 2rem;
+  text-align: center;
+  width: min(46.688rem, 100%);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 0px;
+}
+
+.landing .landingCon :last-child {
+  color: inherit;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  -webkit-transition: var(--mainTransition);
+  transition: var(--mainTransition);
+  -webkit-box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
+          box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
+}
+
+.landing .landingCon :last-child:is(:hover, :focus) {
+  background: var(--clr-light-purple);
+}
+
+@media (min-width: 36rem) {
+  .landing .landingCon {
+    border-radius: 3px;
+  }
+  .landing .landingCon :last-child {
+    margin-top: 2rem;
+  }
+}
+
+.shop {
+  text-align: center;
+  -webkit-margin-after: 5rem;
+          margin-block-end: 5rem;
+}
+
+.shop .shopCon {
+  padding-inline: 1.5rem;
+  color: black;
+}
+
+.shop .shopCon .sectoin-title {
+  padding-block: 4rem 5.625rem;
+}
+
+.shop .shopCon .products {
+  -ms-grid-columns: (minmax(16.25rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(16.25rem, 1fr));
+  gap: 2rem 1.5rem;
+  max-width: 77rem;
+  margin: auto;
+}
+
+.shop .shopCon .products .imgCon {
+  position: relative;
+  overflow: hidden;
+}
+
+.shop .shopCon .products .imgCon:is(:hover, :focus) .addBtn {
+  right: 0;
+}
+
+.shop .shopCon .products .imgCon:is(:hover, :focus) img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.shop .shopCon .products .imgCon img {
+  min-height: 12rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: var(--mainTransition);
+  transition: var(--mainTransition);
+}
+
+.shop .shopCon .products .imgCon .addBtn {
+  position: absolute;
+  bottom: 10%;
+  right: -9.875rem;
+  padding: 0.5rem 0.7rem;
+  font-weight: bold;
+  letter-spacing: inherit;
+  -webkit-transition: var(--mainTransition);
+  transition: var(--mainTransition);
+}
+
+.shop .shopCon .products .imgCon .addBtn:is(:hover, :focus) {
+  color: hsl(var(--clr-white));
+}
+
+.shop .shopCon .products .imgCon .addBtn i {
+  margin-right: 0.7rem;
+}
+
+.shop .shopCon .products .title {
+  margin-block: 1rem 0.5rem;
+}
+/*# sourceMappingURL=main.css.map */
